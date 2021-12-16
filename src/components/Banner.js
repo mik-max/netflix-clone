@@ -53,7 +53,6 @@ const Container = styled.div`
      background-position: center;
      background-color: rgba(0, 0, 0, 0.7);
      background-blend-mode: soft-light;
-     position: relative;
 `
 const Content = styled.div`
      position: absolute;
