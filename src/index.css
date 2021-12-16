@@ -11,3 +11,10 @@ body{
      background-color: #111;
      color: white;
 }
+.show_background{
+     background-color: #111;
+     z-index: 1;
+}
+.hide_background{
+     background-color: transparent;
+}

@@ -3,9 +3,11 @@ import './App.css';
 import requests from './request';
 import Row from './components/Row';
 import Banner from './components/Banner';
+import Navigation from './components/Navigation';
 function App() {
   return (
     <div className="App">
+      <Navigation/>
       <Banner/>
       <Row title = 'Netflix Originals' fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
       <Row title = 'Trending Now' fetchUrl={requests.fetchTrending} />
