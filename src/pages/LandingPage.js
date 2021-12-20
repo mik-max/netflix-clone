@@ -15,9 +15,15 @@ function LandingPage() {
                          </Nav>
                     </div>
                     <div className = "showcase-content">
-                         <h1>Unlimited movies, Tv shows, and more </h1>
-                         <p>Watch anywhere. Cancel anytime.</p>
-                         <Link to= '/netflix-show' className = 'btn btn-xl btn-header'>Watch Free For 30 Days</Link>
+                         <h1>Unlimited movies, Tv shows, and more. </h1>
+                         <h4>Watch anywhere. Cancel anytime.</h4>
+                         <p>Ready to watch? Enter your email to create or restart your membership</p>
+                         <SignUpWrapper>
+                              <input type = 'email' className = 'input' placeholder = 'Email Address' />
+                              <button className = 'signUp_button'>Get Started <span><i className="fa fa-angle-right" aria-hidden="true"></i></span></button>
+
+                         </SignUpWrapper>
+                         {/* <Link to= '/netflix-show' className = 'btn btn-xl btn-header'>Watch Free For 30 Days</Link> */}
                     </div>
                </Container>
                <Wrap>
@@ -99,6 +105,12 @@ const LoginButton = styled.button`
      &:focus{
           outline: none;
      }
+`
+const SignUpWrapper = styled.div`
+     display: flex;
+     align-items: center;
+     margin: 0 auto;
+     max-width: 500px;
 `
 const Wrap = styled.div`
      width: 100%;
