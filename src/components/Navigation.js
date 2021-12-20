@@ -16,14 +16,14 @@ function Navigation() {
           <div className = 'fixed-top'>
                <Nav className = {showBackground? 'show_background' : 'hide_background'}>
                     <Logo src ='/images/netflix_logo.png' />
-                    <UserIcon src ='/images/user_icon.png' />
+                    <UserIcon src ='/images/user_icon.jpg' />
                </Nav>
           </div>
      )
 }
 
 export default Navigation
-const Nav = styled.nav`
+export const Nav = styled.nav`
      height: 60px;
      width: 100%;
      display: flex;
@@ -33,11 +33,11 @@ const Nav = styled.nav`
      transition-timing-function: ease-in-out;
      transition: all 0.5s;
 `
-const Logo = styled.img`
+export const Logo = styled.img`
      width: 80px;
      object-fit: contain;
 `
-const UserIcon = styled.img`
+export const UserIcon = styled.img`
      width: 40px;
      height: 40px;
      object-fit: contain;

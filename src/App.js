@@ -1,24 +1,18 @@
 import React from 'react';
 import './App.css';
-import requests from './request';
-import Row from './components/Row';
-import Banner from './components/Banner';
-import Navigation from './components/Navigation';
-import ReactPlayer from 'react-player';
+import Home from './pages/Home';
+import LandingPage from './pages/LandingPage';
+import { BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 function App() {
   return (
     <div className="App">
-      <Navigation/>
-      <Banner/>
-      <Row title = 'Netflix Originals' fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
-      <Row title = 'Trending Now' fetchUrl={requests.fetchTrending} />
-      <Row title = 'Top Rated' fetchUrl={requests.fetchTopRated} />
-      <Row title = 'Action Movies' fetchUrl={requests.fetchActionMovies} />
-      <Row title = 'Comedy Movies' fetchUrl={requests.fetchComedyMovies} />
-      <Row title = 'Horror Movies' fetchUrl={requests.fetchHorrorMovies} />
-      <Row title = 'Romance movies' fetchUrl={requests.fetchRomanceMovies} />
-      <Row title = 'Documentaries' fetchUrl={requests.fetchDocumentaries} />
-      
+      <BrowserRouter>
+          <Routes>
+            <Route path = "/" element = {<LandingPage />} />
+            <Route path = "/home" element={<Home />} /> 
+          </Routes>
+      </BrowserRouter>
     </div>
   );
 }

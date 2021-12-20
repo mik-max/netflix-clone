@@ -1,0 +1,114 @@
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+.showcase-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 950px;
+  text-align: center;
+}
+
+.showcase-content h1 {
+  font-weight: 600;
+  font-size: 3.125rem;
+  line-height: 1.1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.showcase-content p {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.625rem;
+  line-height: .9;
+  margin: 1rem auto;
+  max-width: 640px;
+}
+
+.btn-header {
+  display: inline-block;
+  background: #e50914;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+
+.btn-xl {
+  font-size: 3rem;
+  padding: 1.5rem 2.1rem;
+  text-transform: uppercase;
+}
+
+.btn-icon {
+  margin-left: 1rem;
+}
+
+@media (max-width: 960px) {
+
+  .showcase-content h1 {
+    font-size: 3.7rem;
+    line-height: 1;
+  }
+
+  .showcase-content p {
+    font-size: 1.5rem;
+  }
+
+  .btn-xl {
+    font-size: 1.5rem;
+    padding: 1.4rem 2rem;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .showcase-content h1 {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .showcase-content p {
+    font-size: 1rem;
+  }
+
+  .btn-xl {
+    font-size: 1rem;
+    padding: 1.2rem 1.6rem;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-height: 600px) {
+  .showcase-content {
+    margin-top: 3rem;
+  }
+}
