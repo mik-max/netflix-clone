@@ -21,3 +21,9 @@ body{
 .hide_background{
      background-color: transparent;
 }
+.display{
+     display: block;
+}
+.hide{
+     display: none;
+}

@@ -1,30 +1,50 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 import '../components/Landing.css'
 import { Link } from 'react-router-dom'
 import { Logo, Nav } from '../components/Navigation';
 import { Fade } from 'react-awesome-reveal';
+import SignUp from '../components/SignUp';
+import SignIn from '../components/SignIn';
 function LandingPage() {
+     const emailRef = useRef("");
+     const [signUp, setSignUp] = useState(false);
+     const [signIn, setSignIn] = useState(false)
+     const [landing, setLanding] = useState(true);
+     let email_value = emailRef.current.value;
+     function clearForm(){
+          emailRef.current.value = '';
+     }
+     function handleGetStarted(event){
+          event.preventDefault();
+          if(emailRef.current.value == ""){
+               setSignUp(false); setLanding(true);
+          }else{
+               setSignUp(true); setLanding(false);
+          }
+     }
      return (
           <>
-               <Container>
-                    <div className = ''>
+               <Container >
+                    <div >
                          <Nav >
                               <Logo src ='/images/netflix_logo.png' />
-                              <LoginButton>Sign in</LoginButton>
+                              <LoginButton onClick = {() => {setSignIn(true); setLanding(false); setSignUp(false)}}>Sign in</LoginButton>
                          </Nav>
                     </div>
-                    <div className = "showcase-content">
+                    <div className ={landing ? "showcase-content" : "hide"}>
                          <h1>Unlimited movies, Tv shows, and more. </h1>
                          <h4>Watch anywhere. Cancel anytime.</h4>
                          <p>Ready to watch? Enter your email to create or restart your membership</p>
                          <SignUpWrapper>
-                              <input type = 'email' className = 'input' placeholder = 'Email Address' />
-                              <button className = 'signUp_button'>Get Started <span><i className="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                              <input type = 'email' className = 'input' required placeholder = 'Email Address' ref = {emailRef} />
+                              <button className = 'signUp_button' onClick = {handleGetStarted}>Get Started <span><i className="fa fa-angle-right" aria-hidden="true" ></i></span></button>
 
                          </SignUpWrapper>
                          {/* <Link to= '/netflix-show' className = 'btn btn-xl btn-header'>Watch Free For 30 Days</Link> */}
                     </div>
+                    <SignUp className = {signUp ? 'display' : 'hide'} onCancle = {() => {setSignUp(false); setSignIn(true)}} email_value = {email_value} onError = {() => {setSignUp(false); setLanding(true)}} />
+                    <SignIn className = {signIn ? 'display' : 'hide'} onCancle = {() => {setSignIn(false); setSignUp(false); setLanding(true)}} />
                </Container>
                <Wrap>
                     <Content>
@@ -36,7 +56,7 @@ function LandingPage() {
                               <div className = 'card-image'>
                                    <img src = 'https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png' />
                                    <div className = 'video-div' >
-                                        <video class="our-story-card-video" autoPlay muted loop>
+                                        <video autoPlay muted loop>
                                              <source src = "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" type="video/mp4"></source>
                                         </video>
                                    </div>
@@ -87,6 +107,10 @@ const Container = styled.div`
      background-color: rgba(0, 0, 0, 0.5);
      background-blend-mode: soft-light;
      border-bottom: 8px solid #222;
+     position: relative;
+     @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+          height: 60vh;
+     }
 `
 const LoginButton = styled.button`
      padding: 8px 16px;
@@ -106,7 +130,7 @@ const LoginButton = styled.button`
           outline: none;
      }
 `
-const SignUpWrapper = styled.div`
+const SignUpWrapper = styled.form`
      display: flex;
      align-items: center;
      margin: 0 auto;

@@ -97,6 +97,7 @@ p {
 .signUp_button:focus{
   outline: none;
 }
+
 @media (max-width: 960px) {
 
   .showcase-content h1 {
