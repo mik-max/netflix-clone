@@ -1,8 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { logOut } from '../firebase';
 import styled from 'styled-components';
+import Contexts from './Context';
+import { useNavigate } from 'react-router';
 function Navigation() {
      const [showBackground, handleShowBackground] = useState(false);
+     const [loading, setLoading] = useState(false);
      useEffect(() => {
+          let unmounted = false;
           window.addEventListener('scroll', () => {
                if(window.scrollY > 100){
                     handleShowBackground(true);
@@ -10,13 +15,24 @@ function Navigation() {
                     handleShowBackground(false);
                }
           })
-          
-     }, [])
+          return () => { unmounted = true };
+     }, []);
+     const userState = useContext(Contexts);
+     const navigate = useNavigate();
+     async function handleSignOut(){
+          setLoading(true);
+          try {
+               await logOut();
+          } catch (error) {
+              alert(error);
+          }
+          setLoading(false);
+     }
      return (
           <div className = 'fixed-top'>
                <Nav className = {showBackground? 'show_background' : 'hide_background'}>
                     <Logo src ='/images/netflix_logo.png' />
-                    <UserIcon src ='/images/user_icon.jpg' />
+                    <UserIcon src ='/images/user_icon.jpg' onClick = {() => {userState.signOut(); handleSignOut(); navigate('/')}} />
                </Nav>
           </div>
      )
@@ -41,4 +57,5 @@ export const UserIcon = styled.img`
      width: 40px;
      height: 40px;
      object-fit: contain;
+     cursor: pointer;
 `

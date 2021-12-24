@@ -4,6 +4,7 @@ import requests from '../request';
 import Row from '../components/Row'
 import Banner from '../components/Banner'
 import Navigation from '../components/Navigation'
+import Footer from '../components/Footer';
 function Home() {
      return (
           <>
@@ -17,6 +18,7 @@ function Home() {
                <Row title = 'Horror Movies' fetchUrl={requests.fetchHorrorMovies} />
                <Row title = 'Romance movies' fetchUrl={requests.fetchRomanceMovies} />
                <Row title = 'Documentaries' fetchUrl={requests.fetchDocumentaries} />
+               <Footer/>
           </>
      )
 }

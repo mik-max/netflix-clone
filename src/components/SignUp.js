@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from "react-router";
 import { signUp, useAuth, logOut, login } from '../firebase';
 import styled from 'styled-components';
-import { useNavigate } from "react-router";
 function SignUp({className, email_value, onCancle, onError}) {
      const emailRef = useRef();
      const passwordRef = useRef();
@@ -11,8 +11,8 @@ function SignUp({className, email_value, onCancle, onError}) {
      const [pswErrAlert, setPswErrAlert] = useState(false);
      const [successAlert, setSuccessAlert] = useState(false);
      const [alertText, setAlertText] = useState('');
-     const navigate = useNavigate();
      const currentUser = useAuth();
+     const navigate = useNavigate();
     async function handleSignUp(event){
          event.preventDefault();
           setLoading(true);
@@ -21,7 +21,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                setEmailErrAlert(false);
                setPswErrAlert(false);
                setAlertText('Account has been successfully created.');
-               onCancle();
+               navigate('/sign_in');
           }).catch(err => {
                if(err.message == 'Firebase: Error (auth/email-already-in-use).'){
                     setEmailErrAlert(true);
@@ -80,7 +80,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                     <input type = 'password' placeholder = 'Password' ref = {passwordRef} required id = 'password' />
                     <button type = 'submit' disabled = {loading} onClick  = {handleSignUp}>Sign Up</button>
                </form>
-               <p>Already have an account? <a href = '#' onClick = {onCancle}>Sign In</a></p>
+               <p>Already have an account? <a href = '#' onClick = {() => {navigate('/sign_in')}}>Sign In</a></p>
          </Wrapper>
                
 

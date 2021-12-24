@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 import './App.css';
 import Home from './pages/Home';
 import LandingPage from './pages/LandingPage';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate} from 'react-router-dom';
 import { Route, Routes } from 'react-router';
-import Footer from './components/Footer';
 import SignIn from './components/SignIn';
+import { useAuth } from './firebase';
+import { UserSlice } from './components/Context';
+import Contexts from './components/Context';
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-          <Routes>
-            <Route path = "/" element = {<LandingPage />} />
-            <Route path = "/home" element={<Home />} /> 
-            <Route path = "/sign_in" element={<SignIn />} /> 
-          </Routes>
-          <Footer/>
-      </BrowserRouter>
+      <UserSlice>
+        <MyRoutes/>
+      </UserSlice>
     </div>
   );
 }
 
-export default App;
+function MyRoutes() {
+  const currentUser = useAuth();
+  const userStatus = useContext(Contexts);
+  return (
+    <BrowserRouter>
+      <Routes>
+        {(!userStatus.result && !currentUser) ? <Route path="/" element={<LandingPage />} /> :
+            <Route path="/home" element={<Home />} />}
+        {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App; 

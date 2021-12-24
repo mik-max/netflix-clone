@@ -1,41 +1,79 @@
 import React from 'react'
-import { useRef, useState, useEffect } from 'react';
-import { signUp, useAuth, logOut, login } from '../firebase';
+import { useRef, useState, useContext} from 'react';
+import { useNavigate } from "react-router";
+import { useAuth, login } from '../firebase';
+import { Container } from '../pages/LandingPage';
 import styled from 'styled-components';
-function SignIn({className, onCancle}) {
+import Contexts from './Context';
+function SignIn(){
      const emailRef = useRef();
      const passwordRef = useRef();
      const [loading, setLoading] = useState(false);
+     const [errorAlert, setErrorAlert] = useState(false);
+     const [alertText, setAlertText] = useState('');
      const currentUser = useAuth();
-     async function handleLogin(){
+     const navigate = useNavigate();
+
+     const userStatus = useContext(Contexts);
+     async function handleLogin(e){
           setLoading(true);
-          try {
-               await login(emailRef.current.value, passwordRef.current.value);
-          } catch (error) {
-               alert(error)
+          e.preventDefault();
+          if(passwordRef.current.value == ''){
+               setErrorAlert(true);
+               setAlertText('Input password');
+          }else if(emailRef.current.value == ''){
+               setErrorAlert(true);
+               setAlertText('Input email address');
+          }else{
+               await login(emailRef.current.value, passwordRef.current.value).then((userCredential) => {
+                    const user = userCredential.user;
+                    navigate('/home');
+                    userStatus.signIn();
+               }).catch(err => {
+                    if(err.message == 'Firebase: Error (auth/user-not-found).'){
+                         setErrorAlert(true);
+                         setAlertText('Email does not exist');
+                    }
+                    else if(err.message == 'Firebase: Error (auth/invalid-email).'){
+                         setErrorAlert(true);
+                         setAlertText('Invalid email address')
+                    }
+                    else if (err.message == 'Firebase: Error (auth/wrong-password).'){
+                         setErrorAlert(true);
+                         setAlertText('wrong password');
+                    }
+                   else{
+                    setAlertText(err.message);
+                   }
+               });
           }
+         
           setLoading(false);
           clearForm();
      }
      function clearForm(){
-          emailRef.current.value = '';
-          passwordRef.current.value = '';
+          emailRef.current.value = null;
+          passwordRef.current.value = null;
      }
      return (
-          <Wrapper className = {className}>
-          
-               <form>
-                    <h1>Sign In</h1>
-                    <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' />
-                    <input type = 'password' placeholder = 'Password' ref = {passwordRef} required id = 'password' />
-                    <button type = 'submit' disabled = {loading} onClick  = {handleLogin}>Sign In</button>
-                    <label className="form-check-label">
-                         <input className="form-check-input remember" type="checkbox" id="check"  required />Remember me
-                    </label>
-               </form>
-               <p>Dont have an account yet? <a href = '#' onClick = {onCancle}>Sign Up</a></p>
-               <p>Currently signed in as : {currentUser?.email}</p>
-         </Wrapper>
+         <Container>
+               <Wrapper>
+                    <div className= {errorAlert? 'alert alert-danger alert-dismissible display' : "hide"}>
+                         <button type="button" className="close" data-dismiss="alert" onClick= {() => {setErrorAlert(false); setAlertText('')}}>&times;</button>
+                         {alertText}
+                    </div>
+                    <form>
+                         <h1>Sign In</h1>
+                         <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' />
+                         <input type = 'password' placeholder = 'Password' ref = {passwordRef} required id = 'password' />
+                         <button type = 'submit' disabled = {loading} onClick  = {handleLogin}>Sign In</button>
+                         <label className="form-check-label">
+                              <input className="form-check-input remember" type="checkbox" id="check"  required />Remember me
+                         </label>
+                    </form>
+                    <p>Dont have an account yet? <a href = '#' onClick = {() => {userStatus.signOut(); navigate('/');}}>Sign Up</a></p>
+               </Wrapper>
+         </Container>
      )
 }
 
@@ -62,6 +100,9 @@ const Wrapper = styled.div`
                text-decoration: none;
                color: #333;
           }
+     }
+     div{
+          margin: 0 10%;
      }
      
      form{

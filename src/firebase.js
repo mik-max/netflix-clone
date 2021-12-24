@@ -25,7 +25,7 @@ export function logOut(){
      return signOut(auth);
 }
 export function login(email, password){
-     return signInWithEmailAndPassword(auth, email, password );
+     return signInWithEmailAndPassword(auth, email, password )
 }
 
 // custom Hook

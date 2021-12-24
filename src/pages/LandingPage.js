@@ -1,16 +1,19 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import styled from 'styled-components'
 import '../components/Landing.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router";
 import { Logo, Nav } from '../components/Navigation';
 import { Fade } from 'react-awesome-reveal';
 import SignUp from '../components/SignUp';
-import SignIn from '../components/SignIn';
+import Footer from '../components/Footer';
+import Contexts from '../components/Context';
 function LandingPage() {
      const emailRef = useRef("");
      const [signUp, setSignUp] = useState(false);
-     const [signIn, setSignIn] = useState(false)
+     const [signIn, setSignIn] = useState(false);
+     const [isLoggedIn, setIsLoggedIn] = useState(false)
      const [landing, setLanding] = useState(true);
+     const navigate = useNavigate();
      let email_value = emailRef.current.value;
      function clearForm(){
           emailRef.current.value = '';
@@ -26,10 +29,10 @@ function LandingPage() {
      return (
           <>
                <Container >
-                    <div >
-                         <Nav >
+                    <div>
+                         <Nav>
                               <Logo src ='/images/netflix_logo.png' />
-                              <LoginButton onClick = {() => {setSignIn(true); setLanding(false); setSignUp(false)}}>Sign in</LoginButton>
+                              <LoginButton onClick = {() => { navigate('/sign_in');}}>Sign in</LoginButton>
                          </Nav>
                     </div>
                     <div className ={landing ? "showcase-content" : "hide"}>
@@ -44,7 +47,7 @@ function LandingPage() {
                          {/* <Link to= '/netflix-show' className = 'btn btn-xl btn-header'>Watch Free For 30 Days</Link> */}
                     </div>
                     <SignUp className = {signUp ? 'display' : 'hide'} onCancle = {() => {setSignUp(false); setSignIn(true)}} email_value = {email_value} onError = {() => {setSignUp(false); setLanding(true)}} />
-                    <SignIn className = {signIn ? 'display' : 'hide'} onCancle = {() => {setSignIn(false); setSignUp(false); setLanding(true)}} />
+                    
                </Container>
                <Wrap>
                     <Content>
@@ -71,7 +74,7 @@ function LandingPage() {
                                    <img src = 'https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg' />
                                    <div className = 'phone_image_animation' >
                                         <div class=""><img alt="" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"/></div>
-                                        <div class=""><div id="" class="text-0" data-uia="">Stranger Things</div><div id="" class="text-1" data-uia="">Downloading...</div></div>
+                                        <div ><div id=""  data-uia="">Stranger Things</div><div id="" className="text-1" data-uia="">Downloading...</div></div>
                                    </div>
                               </div>
                         </Fade>
@@ -94,12 +97,13 @@ function LandingPage() {
                          </Fade>
                     </Content>
                </Wrap>
+               <Footer/>
           </>
      )
 }
 
 export default LandingPage
-const Container = styled.div`
+export const Container = styled.div`
      width: 100%;
      height: 100vh;
      background: url("/images/background.jpg") no-repeat center

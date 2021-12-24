@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import requests from '../request';
 const BASE_URL= 'https://api.themoviedb.org/3';
@@ -12,6 +12,8 @@ function Banner() {
      function truncate(str, n){
           return str?.length > n ? str.substr(0, n-1) + "..." : str;
      }
+     // Used useContext to manage state when
+    
      return (
           <Container style= {{
                backgroundImage: 'url(https://image.tmdb.org/t/p/original/'+movies.backdrop_path+')'
@@ -55,13 +57,23 @@ const Container = styled.div`
      background-blend-mode: soft-light;
      margin-bottom: 10px;
      position: relative;
+     
 `
 const Content = styled.div`
      position: absolute;
      top: 50%;
      left: 20%;
      transform: translate(-20%, -50%);
-     
+     width: 100%;
+     max-width: 950px;
+     padding: 10px 15px;
+    div{
+          h1{
+               padding: 5px;
+               font-size: 20px;
+               font-weight: 500;
+          }
+    } 
 `
 const Controls = styled.div`
      display: flex;
@@ -135,7 +147,7 @@ const GroupWatchButton = styled(AddButton)`
 const Description = styled.div`
      font-size: 20px;
      margin-top: 16px;
-     width: 45rem;
+     width: 100%;
      max-width: 500px
      line-height: 1.3;
      color: rgb(249, 249, 249);
