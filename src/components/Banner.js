@@ -57,6 +57,9 @@ const Container = styled.div`
      background-blend-mode: soft-light;
      margin-bottom: 10px;
      position: relative;
+     @media (max-width: 480px){
+         height: 100vh;
+     }
      
 `
 const Content = styled.div`
@@ -67,13 +70,13 @@ const Content = styled.div`
      width: 100%;
      max-width: 950px;
      padding: 10px 15px;
-    div{
+     div {
           h1{
-               padding: 5px;
-               font-size: 20px;
-               font-weight: 500;
+               @media (max-width: 480px){
+                    font-size: 20px;
+               }
           }
-    } 
+     }
 `
 const Controls = styled.div`
      display: flex;
@@ -103,6 +106,10 @@ const PlayButton = styled.button`
      @media (max-width: 480px){
           
           margin-bottom: 15px
+     }
+     @media screen and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+          padding: 0 18px;
+          margin-right: 10px;
      }
 `
 const TrillerButton = styled(PlayButton)`

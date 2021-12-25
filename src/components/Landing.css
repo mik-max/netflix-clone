@@ -79,6 +79,7 @@ p {
 .signUp_button{
   padding: 16px 16px;
   outline: none;
+  flex: 30%;
   background-color: red;
   color: white;
   cursor: pointer;
@@ -86,7 +87,7 @@ p {
   transition: all 0.2s ease 0s;
   font-size: 20;
   font-weight: 600;
-  
+ 
 }
 .signUp_button span{
    font-size: 16.5px;
@@ -138,4 +139,22 @@ p {
   .showcase-content {
     margin-top: 3rem;
   }
+}
+@media (max-width: 480px){
+ .input{
+    flex: 100%;
+    margin: 10px 15px;
+ }
+ .signUp_button{
+    flex: 100%;
+    margin: 10px 15px;
+ }
+ .showcase-content h1 {
+  font-size: 1.9rem;
+  line-height: 1;
+  }
+  .showcase-content p {
+    font-size: .9rem;
+  }
+ 
 }

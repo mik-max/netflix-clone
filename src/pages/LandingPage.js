@@ -138,7 +138,12 @@ const SignUpWrapper = styled.form`
      display: flex;
      align-items: center;
      margin: 0 auto;
+     width: 100%;
      max-width: 500px;
+     @media (max-width: 480px){
+          flex-wrap: wrap;
+          justify-content: center;
+     }
 `
 const Wrap = styled.div`
      width: 100%;
@@ -156,7 +161,8 @@ const Content = styled.div`
      padding: 0 calc(3.5vw + 5px);
      @media (max-width: 960px){
           flex-wrap: wrap;
-          flex-direction: ${({reverse}) => reverse === 'reverse' && 'column-reverse'}
+          flex-direction: ${({reverse}) => reverse === 'reverse' && 'column-reverse'};
+          justify-content: center;
      }
      div.card-text{
           flex:52%
@@ -167,18 +173,28 @@ const Content = styled.div`
           h1 {
                display: block;
                font-size: 1.5em;
-              
                font-weight: bold;
+               @media (max-width: 640px){
+                    font-size: 1.2em;
+               }
+               @media (max-width: 480px){
+                    font-size: 1em;
+               }
           }
           h2 {
                display: block;
                font-size: .8em;
                font-weight: bold;
+               @media (max-width: 480px){
+                    font-size: .6em;
+
+               }
           }
           @media (max-width: 960px){
                flex: 100%
                overflow: hidden;
                margin: auto;
+               padding: 0;
           }
      }
      div.card-image{
@@ -229,11 +245,17 @@ const Content = styled.div`
           border: 2px solid rgba(255,255,255,.25);
           box-shadow: 0 0 2em 0 #000;
           border-radius: 0.75em;
+          @media (max-width: 480px){
+               left: 8%;
+          }
      }
      div.phone_image_animation div {
           margin: 0 1em 0 0;
           flex-grow: 0;
           flex-shrink: 0;
+          @media (max-width: 480px){
+               margin: 0 .8em 0 0;
+          }
      }
      div.phone_image_animation div img{
           height: 4.5em;
@@ -253,6 +275,9 @@ const Content = styled.div`
           content: '';
           flex-grow: 0;
           flex-shrink: 0;
+          @media (max-width: 480px){
+               width: 1.6em;
+          }
      }
 `
 

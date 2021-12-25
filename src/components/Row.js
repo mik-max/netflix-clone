@@ -33,7 +33,7 @@ function Row({title, fetchUrl, isLargeRow}){
      }
      return (
           <div>
-               <h2>{title}</h2>
+               <h2 className = 'row_h2'>{title}</h2>
                <Container>
                     {movies.map(movie => <Wrap onClick = {() => handleMovie(movie)} className = {isLargeRow &&  'large_poster'} key = {movie.id} src = {`https://image.tmdb.org/t/p/w185/${ isLargeRow ? movie.poster_path : movie.backdrop_path}`} />)}
                </Container>
@@ -48,20 +48,10 @@ const Container = styled.div`
      display: flex;
      overflow-Y : hidden;
      overflow-X: scroll;
-     padding: 20px;
+     padding: 20px 10px;
      &::-webkit-scrollbar{
           display: none;
      }
-     
-     h2{
-          padding-bottom: 10px;
-          @media (max-width: 640px){
-               font-size: 16px;
-          }
-          
-     }
-     
-     
 `
 
 
