@@ -71,7 +71,7 @@ function SignIn(){
                               <input className="form-check-input remember" type="checkbox" id="check"  required />Remember me
                          </label>
                     </form>
-                    <p>Dont have an account yet? <a href = '#' onClick = {() => {userStatus.signOut(); navigate('/');}}>Sign Up</a></p>
+                    <p>Dont have an account yet? <a  onClick = {() => {userStatus.signOut(); navigate('/');}}>Sign Up</a></p>
                </Wrapper>
          </Container>
      )
@@ -81,7 +81,7 @@ export default SignIn
 
 const Wrapper = styled.div`
      background-color: rgba(0, 0, 0, 0.5);
-     height: auto;
+     height: 100vh;
      position: absolute;
      top: 50%;
      left: 50%;

@@ -80,7 +80,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                     <input type = 'password' placeholder = 'Password' ref = {passwordRef} required id = 'password' />
                     <button type = 'submit' disabled = {loading} onClick  = {handleSignUp}>Sign Up</button>
                </form>
-               <p>Already have an account? <a href = '#' onClick = {() => {navigate('/sign_in')}}>Sign In</a></p>
+               <p>Already have an account? <a onClick = {() => {navigate('/sign_in')}}>Sign In</a></p>
          </Wrapper>
                
 

@@ -148,6 +148,7 @@ p {
  .signUp_button{
     flex: 100%;
     margin: 10px 15px;
+    border-radius: 4px;
  }
  .showcase-content h1 {
   font-size: 1.9rem;
