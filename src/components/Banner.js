@@ -60,6 +60,9 @@ const Container = styled.div`
      @media (max-width: 480px){
          height: 100vh;
      }
+     @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+          height: 60vh;
+     }
      
 `
 const Content = styled.div`
