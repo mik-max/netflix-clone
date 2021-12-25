@@ -2,7 +2,6 @@ import React from 'react'
 import { useRef, useState, useContext} from 'react';
 import { useNavigate } from "react-router";
 import { useAuth, login } from '../firebase';
-import { Container } from '../pages/LandingPage';
 import styled from 'styled-components';
 import Contexts from './Context';
 function SignIn(){
@@ -78,10 +77,19 @@ function SignIn(){
 }
 
 export default SignIn
-
+const Container = styled.div`
+     width: 100%;
+     height: 100vh;
+     background: url("/images/background.jpg") no-repeat center
+     center/cover;
+     background-color: rgba(0, 0, 0, 0.5);
+     background-blend-mode: soft-light;
+     border-bottom: 8px solid #222;
+     position: relative;
+`
 const Wrapper = styled.div`
      background-color: rgba(0, 0, 0, 0.5);
-     height: 100vh;
+     height: auto;
      position: absolute;
      top: 50%;
      left: 50%;
