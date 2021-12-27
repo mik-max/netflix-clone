@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import requests from '../request';
+import {Link} from 'react-router-dom'
 const BASE_URL= 'https://api.themoviedb.org/3';
 function Banner() {
      const[movies, setMovies] = useState([]);
@@ -11,8 +12,7 @@ function Banner() {
      }, [])
      function truncate(str, n){
           return str?.length > n ? str.substr(0, n-1) + "..." : str;
-     }
-     // Used useContext to manage state when
+     } 
     
      return (
           <Container style= {{
@@ -22,10 +22,12 @@ function Banner() {
                     <div>
                          <h1>{movies?.title || movies?.name || movies?.original_name}</h1>
                          <Controls className = "">
-                              <PlayButton>
-                                   <img src = '/images/play-icon-black.png'/>
-                                   <span>PLAY</span>
-                              </PlayButton>
+                              {<Link to = {`/watch/${movies.id}`}>
+                                   <PlayButton>
+                                        <img src = '/images/play-icon-black.png'/>
+                                        <span>PLAY</span>
+                                   </PlayButton>
+                              </Link>}
                               <TrillerButton>
                                    <img src = '/images/play-icon-white.png'/>
                                    <span>Triller</span>
@@ -67,7 +69,7 @@ const Container = styled.div`
 `
 const Content = styled.div`
      position: absolute;
-     top: 50%;
+     top: 50%; 
      left: 20%;
      transform: translate(-20%, -50%);
      width: 100%;

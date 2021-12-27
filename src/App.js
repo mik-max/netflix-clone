@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import { useAuth } from './firebase';
 import { UserSlice } from './components/Context';
 import Contexts from './components/Context';
+import Watch from './components/Watch';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function MyRoutes() {
         {(!userStatus.result && !currentUser) ? <Route path="/" element={<LandingPage />} /> :
             <Route path="/home" element={<Home />} />}
         {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
+        <Route path = '/watch/:id' element = {<Watch/>} /> 
       </Routes>
     </BrowserRouter>
   );
