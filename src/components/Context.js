@@ -19,7 +19,7 @@ export function UserSlice (props){
       }, [])
      function signedIn(){
           setUserActiveStatus(true);
-     }
+     } 
      function signedOut(){
           setUserActiveStatus(false);
      }

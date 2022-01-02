@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRef, useState, useContext} from 'react';
 import { useNavigate } from "react-router";
-import { useAuth, login } from '../firebase';
+import { useAuth, login, logOut } from '../firebase';
 import styled from 'styled-components';
 import Contexts from './Context';
 function SignIn(){
@@ -54,6 +54,15 @@ function SignIn(){
           emailRef.current.value = null;
           passwordRef.current.value = null;
      }
+     async function handleSignOut(){
+          setLoading(true);
+          try {
+               await logOut();
+          } catch (error) {
+              alert(error);
+          }
+          setLoading(false);
+     }
      return (
          <Container>
                <Wrapper>
@@ -70,7 +79,7 @@ function SignIn(){
                               <input className="form-check-input remember" type="checkbox" id="check"  required />Remember me
                          </label>
                     </form>
-                    <p>Dont have an account yet? <a  onClick = {() => {userStatus.signOut(); navigate('/');}}>Sign Up</a></p>
+                    <p>Dont have an account yet? <a  onClick = {() => {userStatus.signOut(); navigate('/'); handleSignOut();}}>Sign Up</a></p>
                </Wrapper>
          </Container>
      )
