@@ -4,7 +4,7 @@ const BASE_URL= 'https://api.themoviedb.org/3';
 const Contexts = createContext({
      signIn: () => {},
      signOut: () => {},
-     result: null,
+     result: false,
      netflixOriginals : []
 })
 
