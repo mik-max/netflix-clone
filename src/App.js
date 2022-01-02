@@ -8,11 +8,13 @@ import SignIn from './components/SignIn';
 import { useAuth } from './firebase';
 import { UserSlice } from './components/Context';
 import Contexts from './components/Context';
-import Watch from './components/Watch';
+import Watch from './components/Watch'; 
 
 function App() {
+  const currentUser = useAuth();
+  const userStatus = useContext(Contexts);
   return (
-    <div className="App">
+    <div className = "App">
       <UserSlice>
         <MyRoutes/>
       </UserSlice>
@@ -30,8 +32,7 @@ function MyRoutes() {
             <Route path="/home" element={<Home />} />}
         {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
         {!userStatus.result && <Route path = '/watch/:id' element = {<Watch/>} />}
-        // A fallback route to redirect the user to the right page if authenticated or not 
-        <Route path = '*' element={<Navigate replace to={ (!userStatus.result && !currentUser) ? '/' : '/home'} />} />
+        
       </Routes>
     </BrowserRouter>
   );
