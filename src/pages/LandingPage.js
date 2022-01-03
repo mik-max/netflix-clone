@@ -31,7 +31,7 @@ function LandingPage() {
                <Container >
                     <div>
                          <Nav>
-                              <Logo src ='/images/netflix_logo.png' />
+                              <Logo src ='/images/netflix_logo.png' className = 'large_logo' />
                               <LoginButton onClick = {() => { navigate('/sign_in');}}>Sign in</LoginButton>
                          </Nav>
                     </div>

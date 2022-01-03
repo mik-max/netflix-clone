@@ -76,6 +76,12 @@ p {
   padding: 16px 16px;
   outline: none;
 }
+.input:focus::placeholder{
+  font-size: small;
+  vertical-align:baseline;
+  position:absolute;
+  top: 0;
+}
 .signUp_button{
   padding: 16px 16px;
   outline: none;

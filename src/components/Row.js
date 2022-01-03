@@ -48,7 +48,7 @@ const Container = styled.div`
      display: flex;
      overflow-Y : hidden;
      overflow-X: scroll;
-     padding: 20px 10px;
+     padding: 15px 10px;
      &::-webkit-scrollbar{
           display: none;
      }

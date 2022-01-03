@@ -52,6 +52,9 @@ export const Nav = styled.nav`
 export const Logo = styled.img`
      width: 80px;
      object-fit: contain;
+     &.large_logo{
+          width:150px;
+     }
 `
 export const UserIcon = styled.img`
      width: 40px;
