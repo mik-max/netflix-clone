@@ -32,6 +32,11 @@ function SignUp({className, email_value, onCancle, onError}) {
                     setEmailErrAlert(false);
                     setAlertText('Password should be at least 6 characters ')
                }
+               else if(err.message == 'Firebase: Error (auth/invalid-email).'){
+                    setEmailErrAlert(true);
+                    setPswErrAlert(false)
+                    setAlertText('Invalid email address');
+               }
           });
           
           setLoading(false);
@@ -77,7 +82,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                <form>
                     <h1>Sign Up</h1>
                     <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' value = {email_value}  />
-                    <input type = 'password' placeholder = 'Password' ref = {passwordRef} required id = 'password' />
+                    <input type = 'password' placeholder = 'Create Password' ref = {passwordRef} required id = 'password' />
                     <button type = 'submit' disabled = {loading} onClick  = {handleSignUp}>Sign Up</button>
                </form>
                <p>Already have an account? <a onClick = {() => {navigate('/sign_in')}}>Sign In</a></p>
@@ -129,6 +134,12 @@ const Wrapper = styled.div`
                color: white;
                margin-bottom: 18px;
                outline: none;
+          }
+          input#email:focus::placeholder, input#password:focus::placeholder{
+               font-size: small;
+               vertical-align:baseline;
+               position:absolute;
+               top: 0;
           }
           button{
                width: 100%;

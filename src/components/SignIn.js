@@ -138,6 +138,12 @@ const Wrapper = styled.div`
                margin-bottom: 18px;
                outline: none;
           }
+          input#email:focus::placeholder, input#password:focus::placeholder{
+               font-size: small;
+               vertical-align:baseline;
+               position:absolute;
+               top: 0;
+          }
           button{
                width: 100%;
                padding: 16px 16px;

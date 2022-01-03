@@ -57,10 +57,10 @@ function LandingPage() {
                          </div>
                          <Fade duration = '3000' fraction = '0.3'>
                               <div className = 'card-image'>
-                                   <img src = 'https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png' />
+                                   <img src = '/images/tv.png' />
                                    <div className = 'video-div' >
                                         <video autoPlay muted loop>
-                                             <source src = "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" type="video/mp4"></source>
+                                             <source src = "/videos/video-tv-0819.m4v" type="video/mp4"></source>
                                         </video>
                                    </div>
                               </div>
@@ -71,9 +71,9 @@ function LandingPage() {
                     <Content reverse = 'reverse'>
                         <Fade duration = '3000' fraction = '0.3'>
                               <div className = 'card-image'>
-                                   <img src = 'https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg' />
+                                   <img src = '/images/mobile.jpg' />
                                    <div className = 'phone_image_animation' >
-                                        <div class=""><img alt="" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"/></div>
+                                        <div class=""><img alt="" src="/images/boxshot.png"/></div>
                                         <div ><div id=""  data-uia="">Stranger Things</div><div id="" className="text-1" data-uia="">Downloading...</div></div>
                                    </div>
                               </div>
@@ -92,7 +92,7 @@ function LandingPage() {
                          </div>
                          <Fade duration = '3000' fraction = '0.3'>
                               <div className = 'card-image'>
-                                   <img src="https://occ-0-1799-2705.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABdFTpLmANuJpYneLq8L5m7CunMCi8e8Nl4y7xaPVWzG3IeoDoq17egTQAthApKg_4sdRWdwuR8KadWu1frjL3JQImpwq.png?r=fcd"/>
+                                   <img src="/images/children.png"/>
                               </div>
                          </Fade>
                     </Content>
