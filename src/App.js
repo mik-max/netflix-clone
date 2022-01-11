@@ -31,7 +31,7 @@ function MyRoutes() {
         {(!userStatus.result && !currentUser) ? <Route path="/" element={<LandingPage />} /> :
             <Route path="/home" element={<Home />} />}
         {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
-        {!userStatus.result && <Route path = '/watch/:id' element = {<Watch/>} />}
+        <Route path = '/watch/:id' element = {<Watch/>} />
         // A fallback route to redirect the user to the right page if authenticated or not 
         <Route path = '*' element={<Navigate to={ (!userStatus.result && !currentUser) ? '/': '/home '} />} />
       </Routes>
