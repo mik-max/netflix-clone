@@ -4,14 +4,14 @@ import {initializeApp} from "firebase/app";
 import { useState, useEffect } from 'react';
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD2Y94fvEliRe1gMON8I_JKpqvb1UKU2ck",
-  authDomain: "netflix-clone-ae929.firebaseapp.com",
-  databaseURL: "https://netflix-clone-ae929-default-rtdb.firebaseio.com",
-  projectId: "netflix-clone-ae929",
-  storageBucket: "netflix-clone-ae929.appspot.com",
-  messagingSenderId: "186998778480",
-  appId: "1:186998778480:web:84dee1bb79b29faa3522b5"
-};
+     apiKey: "AIzaSyD2Y94fvEliRe1gMON8I_JKpqvb1UKU2ck",
+     authDomain: "netflix-clone-ae929.firebaseapp.com",
+     databaseURL: "https://netflix-clone-ae929-default-rtdb.firebaseio.com",
+     projectId: "netflix-clone-ae929",
+     storageBucket: "netflix-clone-ae929.appspot.com",
+     messagingSenderId: "186998778480",
+     appId: "1:186998778480:web:a70144dcb90c72da3522b5"
+   };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

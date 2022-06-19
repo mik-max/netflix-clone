@@ -13,8 +13,10 @@ function SignUp({className, email_value, onCancle, onError}) {
      const [alertText, setAlertText] = useState('');
      const currentUser = useAuth();
      const navigate = useNavigate();
+
     async function handleSignUp(event){
          event.preventDefault();
+          console.log(passwordRef.current.value);
           setLoading(true);
           await signUp(emailRef.current.value, passwordRef.current.value).then(() => {
                setSuccessAlert(true);
@@ -77,7 +79,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                </div>
                <div className= {successAlert? 'alert alert-success alert-dismissible display' : "hide"}>
                     <button type="button" className="close" data-dismiss="alert" onClick= {() => {setEmailErrAlert(false);}}>&times;</button>
-                    {alertText}
+                    {alertText}  
                </div>
                <form>
                     <h1>Sign Up</h1>

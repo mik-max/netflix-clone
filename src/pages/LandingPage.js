@@ -205,7 +205,7 @@ const Content = styled.div`
                flex: 100%
                overflow: hidden;
                margin: auto;
-     }
+          }
           img{
                margin: 0 auto;
                height: auto;

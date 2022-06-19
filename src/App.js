@@ -30,7 +30,9 @@ function MyRoutes() {
       <Routes>
         {(!userStatus.result && !currentUser) ? <Route path="/" element={<LandingPage />} /> :
             <Route path="/home" element={<Home />} />}
+        //Automatically takes user to the signIn page once signUp is completed
         {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
+
         <Route path = '/watch/:id' element = {<Watch/>} />
         // A fallback route to redirect the user to the right page if authenticated or not 
         <Route path = '*' element={<Navigate to={ (!userStatus.result && !currentUser) ? '/': '/home '} />} />

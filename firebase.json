@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "netflix-ea308",
     "public": "build",
     "ignore": [
       "firebase.json",
