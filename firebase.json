@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "netflix-clone-bao3d",
+    "site": "clone-netflix-dc",
     "public": "build",
     "ignore": [
       "firebase.json",
