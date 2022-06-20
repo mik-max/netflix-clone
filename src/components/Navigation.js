@@ -32,7 +32,7 @@ function Navigation() {
           <div className = 'fixed-top'>
                <Nav className = {showBackground? 'show_background' : 'hide_background'}>
                     <Logo src ='/images/netflix_logo.png' />
-                    <UserIcon src ='/images/user_icon.jpg' onClick = {() => {userState.signOut(); handleSignOut(); navigate('/')}} />
+                    <UserIcon src ='/images/user_icon.jpg' data-toggle="tooltip" data-placement="bottom" title="Log Out" onClick = {() => {userState.signOut(); handleSignOut(); navigate('/')}} />
                </Nav>
           </div>
      )
