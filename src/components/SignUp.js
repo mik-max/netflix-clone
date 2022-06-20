@@ -23,7 +23,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                setEmailErrAlert(false);
                setPswErrAlert(false);
                setAlertText('Account has been successfully created.');
-               navigate('/sign_in');
+               navigate('/success');
           }).catch(err => {
                if(err.message == 'Firebase: Error (auth/email-already-in-use).'){
                     setEmailErrAlert(true);
@@ -83,7 +83,7 @@ function SignUp({className, email_value, onCancle, onError}) {
                </div>
                <form>
                     <h1>Sign Up</h1>
-                    <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' value = {email_value}  />
+                    <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' defaultValue= {email_value}  />
                     <input type = 'password' placeholder = 'Create Password' ref = {passwordRef} required id = 'password' />
                     <button type = 'submit' disabled = {loading} onClick  = {handleSignUp}>Sign Up</button>
                </form>

@@ -9,6 +9,7 @@ import { useAuth } from './firebase';
 import { UserSlice } from './components/Context';
 import Contexts from './components/Context';
 import Watch from './components/Watch'; 
+import Success from './components/Success';
 
 function App() {
   const currentUser = useAuth();
@@ -32,6 +33,7 @@ function MyRoutes() {
             <Route path="/home" element={<Home />} />}
         //Automatically takes user to the signIn page once signUp is completed
         {!userStatus.result && <Route path = "/sign_in" element = {<SignIn/>}/>}
+        {!userStatus.result && <Route path = "/success" element = {<Success/>}/>}
 
         <Route path = '/watch/:id' element = {<Watch/>} />
         // A fallback route to redirect the user to the right page if authenticated or not 
