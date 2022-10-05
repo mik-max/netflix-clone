@@ -54,6 +54,7 @@ export const Logo = styled.img`
      object-fit: contain;
      &.large_logo{
           width:150px;
+          
      }
 `
 export const UserIcon = styled.img`

@@ -21,7 +21,7 @@ function SignUp({className, email_value, onCancle, onError}) {
           await signUp(emailRef.current.value, passwordRef.current.value).then(() => {
                setSuccessAlert(true);
                setEmailErrAlert(false);
-               setPswErrAlert(false);
+               setPswErrAlert(false);  
                setAlertText('Account has been successfully created.');
                navigate('/success');
           }).catch(err => {
