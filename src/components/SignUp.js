@@ -13,15 +13,17 @@ function SignUp({className, email_value, onCancle, onError}) {
      const [alertText, setAlertText] = useState('');
      const currentUser = useAuth();
      const navigate = useNavigate();
+
     async function handleSignUp(event){
          event.preventDefault();
+          console.log(passwordRef.current.value);
           setLoading(true);
           await signUp(emailRef.current.value, passwordRef.current.value).then(() => {
                setSuccessAlert(true);
                setEmailErrAlert(false);
-               setPswErrAlert(false);
+               setPswErrAlert(false);  
                setAlertText('Account has been successfully created.');
-               navigate('/sign_in');
+               navigate('/success');
           }).catch(err => {
                if(err.message == 'Firebase: Error (auth/email-already-in-use).'){
                     setEmailErrAlert(true);
@@ -77,11 +79,11 @@ function SignUp({className, email_value, onCancle, onError}) {
                </div>
                <div className= {successAlert? 'alert alert-success alert-dismissible display' : "hide"}>
                     <button type="button" className="close" data-dismiss="alert" onClick= {() => {setEmailErrAlert(false);}}>&times;</button>
-                    {alertText}
+                    {alertText}  
                </div>
                <form>
                     <h1>Sign Up</h1>
-                    <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' value = {email_value}  />
+                    <input type = 'email' placeholder = 'Email Address' ref = {emailRef} required id = 'email' defaultValue= {email_value}  />
                     <input type = 'password' placeholder = 'Create Password' ref = {passwordRef} required id = 'password' />
                     <button type = 'submit' disabled = {loading} onClick  = {handleSignUp}>Sign Up</button>
                </form>

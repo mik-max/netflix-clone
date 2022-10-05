@@ -51,8 +51,8 @@ function SignIn(){
           clearForm();
      }
      function clearForm(){
-          emailRef.current.value = null;
-          passwordRef.current.value = null;
+          emailRef.current.value =  '';
+          passwordRef.current.value = '';
      }
      async function handleSignOut(){
           setLoading(true);
