@@ -160,7 +160,7 @@ const Description = styled.div`
      font-size: 20px;
      margin-top: 16px;
      width: 100%;
-     max-width: 500px
+     max-width: 500px;
      line-height: 1.3;
      color: rgb(249, 249, 249);
      @media (max-width: 480px){
