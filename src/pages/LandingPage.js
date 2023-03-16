@@ -165,7 +165,7 @@ const Content = styled.div`
           justify-content: center;
      }
      div.card-text{
-          flex:52%
+          flex:52%;
           height: 100%;
           padding: 0 3rem 0 0;
           font-size: 1.625rem;
@@ -191,18 +191,18 @@ const Content = styled.div`
                }
           }
           @media (max-width: 960px){
-               flex: 100%
+               flex: 100%;
                overflow: hidden;
                margin: auto;
                padding: 0;
           }
      }
      div.card-image{
-          flex: 48%
+          flex: 48%;
           height: 100%;
           position: relative;
           @media (max-width: 960px){
-               flex: 100%
+               flex: 100%;
                overflow: hidden;
                margin: auto;
           }
